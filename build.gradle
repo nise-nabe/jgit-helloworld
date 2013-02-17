@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.eclipse.jgit:org.eclipse.jgit:2.2.0.201212191850-r'
+}
+
+jar {
+	from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+manifest.mainAttributes("Main-Class" : "Main")
